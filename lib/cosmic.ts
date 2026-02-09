@@ -1,5 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk'
-import type { Post, Author, Category } from '@/types'
+import type { Post, Author, Category, Page } from '@/types'
 
 export const cosmic = createBucketClient({
   bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
@@ -148,5 +148,26 @@ export async function getPostsByAuthor(authorId: string): Promise<Post[]> {
       return []
     }
     throw new Error('Failed to fetch posts by author')
+  }
+}
+
+// Changed: Added getPageBySlug for fetching CMS-managed pages (e.g. About)
+export async function getPageBySlug(slug: string): Promise<Page | null> {
+  try {
+    const response = await cosmic.objects
+      .findOne({ type: 'pages', slug })
+      .props(['id', 'title', 'slug', 'metadata', 'created_at'])
+      .depth(1)
+
+    if (!response.object) {
+      return null
+    }
+
+    return response.object as Page
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return null
+    }
+    throw new Error('Failed to fetch page')
   }
 }

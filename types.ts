@@ -44,3 +44,13 @@ export interface Post extends CosmicObject {
     category?: Category;
   };
 }
+
+// Changed: Added Page interface for the About page (and future CMS-managed pages)
+export interface Page extends CosmicObject {
+  type: 'pages';
+  metadata: {
+    heading: string;
+    content: string;
+    hero_image?: CosmicFile;
+  };
+}

@@ -44,6 +44,13 @@ export default function Header({ categories }: HeaderProps) {
                   {category.metadata.name}
                 </Link>
               ))}
+              {/* Changed: Added About link to desktop navigation */}
+              <Link
+                href="/about"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              >
+                About
+              </Link>
             </nav>
 
             {/* Right side */}

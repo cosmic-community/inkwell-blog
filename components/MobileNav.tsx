@@ -62,6 +62,14 @@ export default function MobileNav({ isOpen, onClose, categories }: MobileNavProp
             >
               Home
             </Link>
+            {/* Changed: Added About link to mobile navigation */}
+            <Link
+              href="/about"
+              onClick={onClose}
+              className="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:text-amber-700 dark:hover:text-amber-400 font-medium transition-colors"
+            >
+              About
+            </Link>
           </div>
 
           {categories.length > 0 && (
