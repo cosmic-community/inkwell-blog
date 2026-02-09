@@ -25,7 +25,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
-      typography: ({ theme }: { theme: (path: string) => string }) => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             '--tw-prose-body': theme('colors.gray.700'),
